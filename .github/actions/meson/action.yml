@@ -31,8 +31,7 @@ runs:
       with:
         name: tarballs
         path: |
-          builddir/*.tar.gz
-          builddir/*.tar.xz
+          builddir/meson-dist/*.tar.xz
     # - id: doxy
     #   run: ninja -C builddir doc/html 2>&1 > doxygen.log
     #   shell: bash
