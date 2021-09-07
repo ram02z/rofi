@@ -24,7 +24,7 @@ runs:
       run: ninja -C builddir test
       shell: bash
     - id: dist
-      run: meson dist -C builddir --include-subprojects
+      run: meson dist -C builddir --include-subprojects --formats xztar,gztar
       shell: bash
     - id: upload
       uses: actions/upload-artifact@v2
@@ -32,6 +32,7 @@ runs:
         name: tarballs
         path: |
           builddir/meson-dist/*.tar.xz
+          builddir/meson-dist/*.tar.gz
     # - id: doxy
     #   run: ninja -C builddir doc/html 2>&1 > doxygen.log
     #   shell: bash
