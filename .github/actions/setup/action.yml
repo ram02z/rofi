@@ -37,6 +37,7 @@ runs:
           python3-wheel \
           texi2html \
           texinfo \
+          wayland-protocols \
           xdotool \
           xfonts-base \
           xterm \
