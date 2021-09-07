@@ -20,6 +20,7 @@ runs:
           lcov \
           libpango1.0-dev \
           libstartup-notification0-dev \
+          libwayland-dev \
           libxcb-ewmh-dev \
           libxcb-icccm4-dev \
           libxcb-randr0-dev \
