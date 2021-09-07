@@ -3,7 +3,7 @@ name: CI Build
 on:
   push:
     branches:
-      - next
+      - wayland
     paths-ignore:
       - "**.md"
       - "**.markdown"
@@ -35,23 +35,23 @@ jobs:
       - uses: ./.github/actions/meson
         with:
           cc: clang
-  build-autotools-gcc:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - uses: ./.github/actions/setup
-      - uses: ./.github/actions/autotools
-        with:
-          cc: gcc
-  build-autotools-clang:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - uses: ./.github/actions/setup
-      - uses: ./.github/actions/autotools
-        with:
-          cc: clang
+  # build-autotools-gcc:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: recursive
+  #     - uses: ./.github/actions/setup
+  #     - uses: ./.github/actions/autotools
+  #       with:
+  #         cc: gcc
+  # build-autotools-clang:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: recursive
+  #     - uses: ./.github/actions/setup
+  #     - uses: ./.github/actions/autotools
+  #       with:
+  #         cc: clang

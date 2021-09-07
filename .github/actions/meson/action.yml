@@ -13,7 +13,7 @@ runs:
       run: pip install meson ninja
       shell: bash
     - id: setup
-      run: meson setup builddir -Db_coverage=true
+      run: meson setup builddir -Dwayland=enabled
       shell: bash
       env:
         CC: ${{ inputs.cc }}
@@ -23,10 +23,20 @@ runs:
     - id: test
       run: ninja -C builddir test
       shell: bash
-    - id: doxy
-      run: ninja -C builddir doc/html 2>&1 > doxygen.log
+    - id: dist
+      run: meson dist -C builddir --include-subprojects --formats xztar,gztar --no-tests
       shell: bash
-    - id: doxycheck
-      uses: ./.github/actions/doxycheck
+    - id: upload
+      uses: actions/upload-artifact@v2
       with:
-        logfile: doxygen.log
+        name: tarballs
+        path: |
+          builddir/meson-dist/*.tar.xz
+          builddir/meson-dist/*.tar.gz
+    # - id: doxy
+    #   run: ninja -C builddir doc/html 2>&1 > doxygen.log
+    #   shell: bash
+    # - id: doxycheck
+    #   uses: ./.github/actions/doxycheck
+    #   with:
+    #     logfile: doxygen.log

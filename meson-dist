@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+if test "$1" = ""; then
+    echo "Version not provided" >&2
+    exit 1
+fi
+
+if ! test -d "$2"; then
+    echo "Source directory not provided" >&2
+    exit 1
+fi
+
+# Generate tarball version
+echo "$1" > "$MESON_DIST_ROOT/.tarball-version"
+
+# Remove files
+pushd "$MESON_DIST_ROOT"
+
+find . -name .gitignore -delete
+rm -rf \
+.gitlab-ci.yml \
+.travis.yml \
+.github \
+data \
+releasenotes \
+doc/*.png \
+doc/help-output.txt \
+doc/sizing.svg \
+doc/Notes \
+doc/old-theme-convert-output.rasi \
+doc/test_xr.txt \
+doc/create_screenshot.sh \
+doc/README.md \
+doc/meson_build_manpages.sh \
+script/*.jpg

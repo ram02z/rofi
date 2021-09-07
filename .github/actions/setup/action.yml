@@ -20,6 +20,7 @@ runs:
           lcov \
           libpango1.0-dev \
           libstartup-notification0-dev \
+          libwayland-dev \
           libxcb-ewmh-dev \
           libxcb-icccm4-dev \
           libxcb-randr0-dev \
@@ -37,14 +38,15 @@ runs:
           python3-wheel \
           texi2html \
           texinfo \
+          wayland-protocols \
           xdotool \
           xfonts-base \
           xterm \
           xutils-dev
       shell: bash
-    - id: doxy
-      run: git clone https://github.com/alobbs/doxy-coverage
-      shell: bash
+    # - id: doxy
+    #   run: git clone https://github.com/alobbs/doxy-coverage
+    #   shell: bash
     - id: check
       run: |
         curl -L https://github.com/libcheck/check/releases/download/0.14.0/check-0.14.0.tar.gz | tar xzf -
