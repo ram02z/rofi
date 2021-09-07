@@ -113,15 +113,15 @@ config_h = configure_file(output: 'config.h', configuration: header_conf)
 nk_options = [
     'bindings=true',
     'xdg-theme=true',
-    # 'git-work-tree=@0@'.format(meson.source_root()),
+    'git-work-tree=@0@'.format(meson.source_root()),
 ]
 nk = subproject('libnkutils', default_options: nk_options)
 nk_subproject_options = nk.get_variable('nk_options')
-foreach o : nk_options + nk_subproject_options
-    if not nk_options.contains(o) or not nk_subproject_options.contains(o)
-        error('You must not change libnkutils options @0@ != @1@'.format('|'.join(nk_options), '|'.join(nk_subproject_options)))
-    endif
-endforeach
+# foreach o : nk_options + nk_subproject_options
+#     if not nk_options.contains(o) or not nk_subproject_options.contains(o)
+#         error('You must not change libnkutils options @0@ != @1@'.format('|'.join(nk_options), '|'.join(nk_subproject_options)))
+#     endif
+# endforeach
 deps += nk.get_variable('libnkutils')
 deps += nk.get_variable('libnkutils_bindings')
 
